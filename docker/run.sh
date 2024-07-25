@@ -35,4 +35,14 @@ echo "Using $DOCKER_IMAGE_NAME:$TAG"
 docker run \
     -it --rm \
     --net=host \
+    -e DISPLAY=$DISPLAY \
+    --env=NVIDIA_VISIBLE_DEVICES=all \
+    --env=NVIDIA_DRIVER_CAPABILITIES=all \
+    --env=QT_X11_NO_MITSHM=1 \
+    --runtime=nvidia \
+    --privileged \
+    --shm-size=16gb \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /dev:/dev \
+    --gpus all \
     "$DOCKER_IMAGE_NAME:$TAG" "$@"

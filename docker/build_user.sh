@@ -21,7 +21,7 @@ if [[ "$ROS_DISTRO" == "humble" ]]
 then
 docker build \
     -t carla-ros-bridge:$ROS_DISTRO \
-    -f Dockerfile_humble ${SCRIPT_DIR}/.. \
+    -f Dockerfile_humble_user ${SCRIPT_DIR}/.. \
     --build-arg ROS_DISTRO=$ROS_DISTRO \
     --build-arg CARLA_VERSION=$CARLA_VERSION \
     --build-arg USERNAME=$USERNAME \
